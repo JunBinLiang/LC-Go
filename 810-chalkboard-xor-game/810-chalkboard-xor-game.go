@@ -8,10 +8,7 @@ func xorGame(a []int) bool {
         return true
     }
     
-    sort.Ints(a)
-    if a[0] == a[n - 1] {
-        return false
-    }
+    
     
     if n % 2 == 1 {
         return false
