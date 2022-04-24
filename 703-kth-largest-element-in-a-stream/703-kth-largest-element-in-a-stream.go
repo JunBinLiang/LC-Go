@@ -21,11 +21,6 @@ func (h *IntHeap) Pop() interface{} {
     return x
 }
 
-
-
-var K int
-var h *IntHeap
-
 type KthLargest struct {
     k  int 
     h  *IntHeap
