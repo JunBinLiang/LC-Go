@@ -8,7 +8,7 @@ func hasValidPath(a [][]byte) bool {
     var n, m int = len(a), len(a[0])
     for i := 0; i < n; i++ {
         for j := 0; j < m; j++ {
-            for k := 0; k < 101; k++ {
+            for k := 0; k < 105; k++ {
                 dp[i][j][k] = false
             }
         }
