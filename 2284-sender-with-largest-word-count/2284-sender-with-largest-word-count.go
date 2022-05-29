@@ -10,8 +10,8 @@ func cal(s string) int {
 
 	
 type pair struct {
-    name string
-    cnt  int
+    Name string
+    Cnt  int
 }
 
 func largestWordCount(messages []string, senders []string) string {
@@ -27,11 +27,11 @@ func largestWordCount(messages []string, senders []string) string {
     }
     
     sort.SliceStable(a, func(i, j int) bool {
-        if a[i].cnt == a[j].cnt {
-            return a[i].name > a[j].name
+        if a[i].Cnt == a[j].Cnt {
+            return a[i].Name > a[j].Name
         }
-		return a[i].cnt > a[j].cnt
+		return a[i].Cnt > a[j].Cnt
 	})
     
-    return a[0].name
+    return a[0].Name
 }
