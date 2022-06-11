@@ -1,48 +1,35 @@
-using namespace std;
-using ll = long long;
-#define pb push_back
-#define ve vector
-#define FOR(i, a, b) for (int i = a; i < b; ++i)
-#define RFOR(i, a, b) for (int i = a; i >= b; i--)
-#define f first
-#define se second
-#define W while
-#define um unordered_map
-#define us unordered_set
-#define be begin
-#define en end
-
-class Solution {
-public:
-    bool matchReplacement(string s, string sub, vector<vector<char>>& m) {
-        um<char, us<char>> f;
-        for(int i = 0; i < m.size(); i++) {
-            char c1 = m[i][0];
-            char c2 = m[i][1];
-            f[c1].insert(c2);
-        }
-        
-        
-        for(int i = 0; i < s.size(); i++) {
-            if(i + sub.size() - 1 >= s.size()) {
-                break;
-            }
-            
-            bool yes = true;
-            for(int j = 0; j < sub.size(); j++) {
-                if(sub[j] != s[i + j]) {
-                    char c1 = sub[j], c2 = s[i + j];
-                    if(f[c1].find(c2) == f[c1].end()) {
-                        yes = false;
-                        break;
-                    }
-                }
-            }
-            
-            if(yes) return true;
-        }
-        
-        
-        return false;
+func matchReplacement(s string, sub string, mappings [][]byte) bool {
+    ok := make([][]bool, 256)
+    for i := 0; i < 256; i++ {
+        ok[i] = make([]bool, 256)
     }
-};
+    
+    for i := 0; i < len(mappings); i++ {
+        c1 := mappings[i][0]
+        c2 := mappings[i][1]
+        ok[int(c1)][int(c2)] = true
+    }
+    
+    for i := 0; i < len(s); i++ {
+        if i + len(sub) - 1 >= len(s) {
+            break
+        }
+        
+        good := true
+        for j := 0; j < len(sub); j++ {
+            if sub[j] != s[i + j] {
+                c1 := int(sub[j])
+                c2 := int(s[i + j])
+                if !ok[c1][c2] {
+                    good = false
+                    break
+                }
+            } 
+        }
+        if good {
+            return true
+        }
+    }
+    
+    return false
+}
